@@ -1,0 +1,53 @@
+.container {
+    width: 50%;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 48%; /* Adjust the width to fit two inputs in a row with some margin */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: calc(100% - 10px); /* Adjust the width of the inputs to fit two inputs in a row */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%; /* Make the select input full width */
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+.container {
+    width: 50%;
+    margin: auto;
+    border: 1px solid #ccc; /* Add border around the container */
+    padding: 20px; /* Add padding inside the container */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    background-color: #f9f9f9; /* Light background color for better contrast */
+}

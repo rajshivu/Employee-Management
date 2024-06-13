@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Active Employees</title>
+	
+	<link rel="stylesheet" type="text/css" href="/s.css">
+	<script src="scripts.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h2>Active Employees</h2>
+		<p>Update Employee by click on id</p>
+		<table id="employeeTable">
+			<thead>
+				<tr>
+					<th>Employee Id</th>
+					<th>Name</th>
+					<th>Date of Join</th>
+					<th>Department</th>
+					<th>Contact No</th>
+					<th>Email</th>
+					<th>Highest Qualification</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td><a th:href="@{'/employees/' + ${employee.id} + '/update'}" th:text="${employee.id}"></a></td>
+					<td th:text="${employee.firstName} + ' ' + ${employee.lastName}"></td>
+					<td th:text="${employee.dateOfJoin}"></td>
+					<td th:text="${employee.department}"></td>
+					<td th:text="${employee.contactNo}"></td>
+					<td th:text="${employee.email}"></td>
+					<td th:text="${employee.education1 != null ? employee.education1.qualification : 'N/A'}"></td>
+					<td>
+						<form th:action="@{'/employees/' + ${employee.id} + '/deactivate'}" method="POST">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+
+
+</body>
+
+</html>

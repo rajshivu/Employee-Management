@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="/n.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add Employee</h1><br>
+        <form id="employeeForm" th:action="@{/employees/create}" th:object="${shivaraj}" method="POST">
+            <!-- Personal Details -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" th:field="*{firstName}" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" th:field="*{lastName}" required>
+                </div>
+            </div>
+            <!-- Job Details -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dateOfJoin">Date of Join *</label>
+                    <input type="date" id="dateOfJoin" th:field="*{dateOfJoin}" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department *</label>
+                    <input type="text" id="department" th:field="*{department}" required>
+                </div>
+            </div>
+            <!-- Salary and Experience -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <input type="number" id="salary" th:field="*{salary}">
+                </div>
+                <div class="form-group">
+                    <label for="experience">Experience</label>
+                    <select id="experience" th:field="*{experience}">
+						
+                        <option value="true" >Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Permanent Address -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="permanentStreet">Permanent Street:</label>
+                    <input type="text" id="permanentStreet" th:field="*{permanentAddress.street}">
+                </div>
+                <div class="form-group">
+                    <label for="permanentCity">Permanent City:</label>
+                    <input type="text" id="permanentCity" th:field="*{permanentAddress.city}">
+                </div>
+                <div class="form-group">
+                    <label for="permanentState">Permanent State:</label>
+                    <input type="text" id="permanentState" th:field="*{permanentAddress.state}">
+                </div>
+                <div class="form-group">
+                    <label for="permanentZipCode">Permanent Zip Code:</label>
+                    <input type="text" id="permanentZipCode" th:field="*{permanentAddress.zipCode}">
+                </div>
+            </div>
+            <!-- Present Address -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="presentStreet">Present Street:</label>
+                    <input type="text" id="presentStreet" th:field="*{presentAddress.street}">
+                </div>
+                <div class="form-group">
+                    <label for="presentCity">Present City:</label>
+                    <input type="text" id="presentCity" th:field="*{presentAddress.city}">
+                </div>
+                <div class="form-group">
+                    <label for="presentState">Present State:</label>
+                    <input type="text" id="presentState" th:field="*{presentAddress.state}">
+                </div>
+                <div class="form-group">
+                    <label for="presentZipCode">Present Zip Code:</label>
+                    <input type="text" id="presentZipCode" th:field="*{presentAddress.zipCode}">
+                </div>
+            </div>
+            <!-- Education Details -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="qualification">Qualification</label>
+                    <input type="text" id="qualification" th:field="*{education1.qualification}">
+                </div>
+                <div class="form-group">
+                    <label for="university">University/College</label>
+                    <input type="text" id="university" th:field="*{education1.university}">
+                </div>
+                <div class="form-group">
+                    <label for="percentage">Percentage</label>
+                    <input type="number" id="percentage" th:field="*{education1.percentage}">
+                </div>
+                <div class="form-group">
+                    <label for="completionYear">Completion Year</label>
+                    <input type="number" id="completionYear" th:field="*{education1.completionYear}">
+                </div>
+            </div>
+            <!-- Contact Information -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contactNo">Contact No *</label>
+                    <input type="text" id="contactNo" th:field="*{contactNo}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" th:field="*{email}" required>
+                </div>
+                <div class="form-group">
+                    <label for="activeStatus">Status *</label>
+                    <select id="activeStatus" th:field="*{activeStatus}" required>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function (event) {
+            
+            
+            var firstNameInput = document.getElementById('firstName');
+            var firstNameValue = firstNameInput.value;
+            
+            var firstChar = firstNameValue.charAt(0);
+            if(firstChar==' '){
+				
+			}
+
+            // Regular expression to check if the first character is a letter
+            var isLetter = /^[a-zA-Z]$/.test(firstChar);
+
+            if (!isLetter) {
+                alert('First Name must start with a letter.');
+                event.preventDefault(); // Prevent the form from submitting
+            }
+
+            // Validate Permanent Zip Code
+            var permanentZipCode = document.getElementById('permanentZipCode').value;
+            if (permanentZipCode && (permanentZipCode.length !== 6 || isNaN(permanentZipCode))) {
+                alert('Permanent Zip Code must be exactly 6 digits.');
+                event.preventDefault();
+                return;
+            }
+
+            // Validate Present Zip Code
+            var presentZipCode = document.getElementById('presentZipCode').value;
+            if (presentZipCode && (presentZipCode.length !== 6 || isNaN(presentZipCode))) {
+                alert('Present Zip Code must be exactly 6 digits.');
+                event.preventDefault();
+                return;
+            }
+            
+            // Validate Contact Number
+            var contactNo = document.getElementById('contactNo').value;
+            if (contactNo.length !== 10 || isNaN(contactNo)) {
+                alert('Contact number must be exactly 10 digits.');
+                event.preventDefault();
+                return;
+            }
+
+            // Validate Email
+            //var email = document.getElementById('email').value;
+            //if (!email.endsWith('@gmail.com')) {
+             //   alert('Email must end with @gmail.com.');
+             //   event.preventDefault();
+             //   return;
+            //}
+        });
+    </script>
+</body>
+
+</html>

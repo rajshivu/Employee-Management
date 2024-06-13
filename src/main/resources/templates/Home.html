@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Employee Management System</title>
+	<link rel="stylesheet" type="text/css" href="/home.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>Welcome to the Employee Management System</h1>
+		<p>
+			This system allows you to manage employee records efficiently. 
+		</p>
+		<p>You can add new employees, update their
+			details, view all active employees.</p><br>
+		<div class="button-container">
+			<a th:href="@{/employees/create}" class="btn"><i class="fas fa-user-plus"></i> Add Employee</a>
+			<a th:href="@{/employees/active}" class="btn"><i class="fas fa-users"></i> Active Employees</a>
+		</div>
+	</div>
+</body>
+
+</html>

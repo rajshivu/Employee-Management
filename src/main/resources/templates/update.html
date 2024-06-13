@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Update Employee</title>
+	<link rel="stylesheet" href="/n.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Update Employee</h1>
+		<form th:action="@{/employees/{id}/update(id=${employee.id})}" th:object="${employee}" method="post">
+
+
+			<div class="form-row">
+				<div class="form-group">
+					<label for="firstName">First Name *</label>
+					<input type="text" id="firstName" th:field="*{firstName}" required>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name *</label>
+					<input type="text" id="lastName" th:field="*{lastName}" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="id">Employee ID</label>
+					<input type="text" id="id" th:field="*{id}" readonly>
+				</div>
+				<div class="form-group">
+					<label for="dateOfJoin">Date of Join *</label>
+					<input type="date" id="dateOfJoin" th:field="*{dateOfJoin}" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="department">Department *</label>
+					<input type="text" id="department" th:field="*{department}" required>
+				</div>
+				<div class="form-group">
+					<label for="salary">Salary</label>
+					<input type="number" id="salary" th:field="*{salary}">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group">
+					<label for="permanentStreet">Permanent Street</label>
+					<input type="text" id="permanentStreet" th:field="*{permanentAddress.street}">
+				</div>
+				<div class="form-group">
+					<label for="permanentCity">Permanent City</label>
+					<input type="text" id="permanentCity" th:field="*{permanentAddress.city}">
+				</div>
+				<div class="form-group">
+					<label for="permanentState">Permanent State</label>
+					<input type="text" id="permanentState" th:field="*{permanentAddress.state}">
+				</div>
+				<div class="form-group">
+					<label for="permanentZipCode">Permanent Zip Code</label>
+					<input type="text" id="permanentZipCode" th:field="*{permanentAddress.zipCode}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="presentStreet">Present Street</label>
+					<input type="text" id="presentStreet" th:field="*{presentAddress.street}">
+				</div>
+				<div class="form-group">
+					<label for="presentCity">Present City</label>
+					<input type="text" id="presentCity" th:field="*{presentAddress.city}">
+				</div>
+				<div class="form-group">
+					<label for="presentState">Present State</label>
+					<input type="text" id="presentState" th:field="*{presentAddress.state}">
+				</div>
+				<div class="form-group">
+					<label for="presentZipCode">Present Zip Code</label>
+					<input type="text" id="presentZipCode" th:field="*{presentAddress.zipCode}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="qualification">Qualification</label>
+					<input type="text" id="qualification" th:field="*{education1.qualification}">
+				</div>
+				<div class="form-group">
+					<label for="university">University/College</label>
+					<input type="text" id="university" th:field="*{education1.university}">
+				</div>
+				<div class="form-group">
+					<label for="percentage">Percentage</label>
+					<input type="number" id="percentage" th:field="*{education1.percentage}">
+				</div>
+				<div class="form-group">
+					<label for="completionYear">Completion Year</label>
+					<input type="number" id="completionYear" th:field="*{education1.completionYear}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="contactNo">Contact No *</label>
+					<input type="text" id="contactNo" th:field="*{contactNo}" required>
+				</div>
+				<div class="form-group">
+					<label for="email">Email *</label>
+					<input type="email" id="email" th:field="*{email}" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="experience">Experience</label>
+					<select id="experience" th:field="*{experience}">
+						<option value="true" th:selected="*{experience} == true">Yes</option>
+						<option value="false" th:selected="*{experience} == false">No</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="activeStatus">Active Status *</label>
+					<select id="activeStatus" th:field="*{activeStatus}" required>
+						<option value="true" th:selected="*{activeStatus} == true">Active</option>
+						<option value="false" th:selected="*{activeStatus} == false">Inactive</option>
+					</select>
+				</div>
+			</div>
+			<button type="submit">Update</button>
+		</form>
+	</div>
+</body>
+
+</html>
